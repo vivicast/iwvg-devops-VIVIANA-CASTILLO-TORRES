@@ -18,4 +18,4 @@ deploy:
   api_key: $HEROKU
   on:
     branch: master
-    app: iwvg-devops-viviana-castillo-t
+  app: iwvg-devops-viviana-castillo-t
