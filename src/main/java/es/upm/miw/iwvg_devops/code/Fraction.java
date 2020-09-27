@@ -1,5 +1,6 @@
 package es.upm.miw.iwvg_devops.code;
 
+
 /**
  * Conceptos: Las fracciones propias son aquellas cuyo numerador es menor que el denominador
  * <p>
@@ -17,9 +18,6 @@ package es.upm.miw.iwvg_devops.code;
  * <p>
  * Suma fracciones: En primer lugar se reducen los denominadores a común denominador, y se suman o se restan los numeradores de las
  * fracciones equivalentes obtenidas
- * <p>
- * Multiplicación: La multiplicación de dos fracciones es otra fracción que tiene: Por numerador el producto de los numeradores. Por
- * denominador el producto de los denominadores.
  * <p>
  * La división de dos fracciones es otra fracción que tiene: Por numerador el producto de los extremos. Por denominador el producto de los
  * medios. Invertir fraccion
@@ -59,6 +57,69 @@ public class Fraction {
         return (double) numerator / denominator;
     }
 
+    public boolean isProper(Fraction fraction) {
+        boolean isProper;
+        isProper = false;
+        if (fraction != null) {
+            isProper = this.greaterThan(fraction.getDenominator(), fraction.getNumerator());
+        }
+        return isProper;
+    }
+
+    public boolean isImproper(Fraction fraction) {
+        boolean isImproper;
+        isImproper = false;
+        if (fractionNotNull(fraction))
+            isImproper = this.greaterThan(fraction.getNumerator(), fraction.getDenominator());
+
+        return isImproper;
+    }
+
+    public Fraction sum(Fraction fraction1, Fraction fraction2) {
+        Fraction result = new Fraction();
+
+        if (fraction1.getDenominator() == (fraction2.getDenominator())) {
+            result.setNumerator(sumNumbers(fraction1.getNumerator(), fraction2.getNumerator()));
+            result.setDenominator(fraction1.getDenominator());
+        } else {
+            int mcm = minimumCommonMultiple(fraction1.getDenominator(), fraction2.getDenominator());
+
+            result.setNumerator((mcm / fraction1.getDenominator() * fraction1.getNumerator() +
+                    mcm / fraction2.getDenominator() * fraction2.getNumerator()));
+            result.setDenominator(mcm);
+
+        }
+        return result;
+    }
+
+
+    public Fraction multiply(Fraction fraction1, Fraction fraction2) {
+        Fraction result = new Fraction();
+        if (fractionNotNull(fraction1) & fractionNotNull(fraction2)) {
+            result.setNumerator(fraction1.getNumerator() * fraction2.getNumerator());
+            result.setDenominator(fraction1.getDenominator() * fraction2.getDenominator());
+        }
+        return result;
+    }
+
+    /**
+     * Dos fracciones son equivalentes cuando el producto de extremos (numerador de la primera por denominador de la segunda) es igual al
+     * producto de medios (denominador de la primera por el numerador de la segunda)
+     */
+    public boolean isEquivalent(Fraction fraction1, Fraction fraction2) {
+        boolean isEquivalent;
+        isEquivalent = false;
+
+        if (fractionNotNull(fraction1) & fractionNotNull(fraction2)) {
+            int extremes = multiplyNumbers(fraction1.getNumerator(), fraction2.getDenominator());
+            int medium = multiplyNumbers(fraction1.getDenominator(), fraction2.getNumerator());
+            if (extremes == medium) {
+                isEquivalent = true;
+            }
+        }
+        return isEquivalent;
+    }
+
     @Override
     public String toString() {
         return "Fraction{" +
@@ -66,4 +127,38 @@ public class Fraction {
                 ", denominator=" + denominator +
                 '}';
     }
+
+    private boolean greaterThan(int numberOne, int numberTwo) {
+        return numberOne > numberTwo;
+    }
+
+    private boolean fractionNotNull(Fraction fraction) {
+        return fraction != null;
+    }
+
+    private int multiplyNumbers(int a, int b) {
+        return a * b;
+    }
+
+    private int sumNumbers(int a, int b) {
+        return a + b;
+    }
+
+    private int minimumCommonMultiple(int a, int b) {
+        return (a * b) / mcd(a, b);
+    }
+
+    private int mcd(int a, int b) {
+        int minim = Math.min(Math.abs(a), Math.abs(b));
+        int maxim = Math.max(Math.abs(a), Math.abs(b));
+        int rest;
+
+        while (minim != 0) {
+            rest = maxim % minim;
+            maxim = minim;
+            minim = rest;
+        }
+        return maxim;
+    }
+
 }
