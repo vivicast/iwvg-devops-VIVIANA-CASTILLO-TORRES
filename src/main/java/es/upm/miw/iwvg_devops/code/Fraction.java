@@ -61,7 +61,7 @@ public class Fraction {
         boolean isProper;
         isProper = false;
         if (fraction != null) {
-            isProper = this.greaterThan(fraction.getDenominator(), fraction.getNumerator());
+            isProper = Utils.greaterThan(fraction.getDenominator(), fraction.getNumerator());
         }
         return isProper;
     }
@@ -69,8 +69,8 @@ public class Fraction {
     public boolean isImproper(Fraction fraction) {
         boolean isImproper;
         isImproper = false;
-        if (fractionNotNull(fraction))
-            isImproper = this.greaterThan(fraction.getNumerator(), fraction.getDenominator());
+        if (Utils.fractionNotNull(fraction))
+            isImproper = Utils.greaterThan(fraction.getNumerator(), fraction.getDenominator());
 
         return isImproper;
     }
@@ -79,10 +79,10 @@ public class Fraction {
         Fraction result = new Fraction();
 
         if (fraction1.getDenominator() == (fraction2.getDenominator())) {
-            result.setNumerator(sumNumbers(fraction1.getNumerator(), fraction2.getNumerator()));
+            result.setNumerator(Utils.sumNumbers(fraction1.getNumerator(), fraction2.getNumerator()));
             result.setDenominator(fraction1.getDenominator());
         } else {
-            int mcm = minimumCommonMultiple(fraction1.getDenominator(), fraction2.getDenominator());
+            int mcm = Utils.minimumCommonMultiple(fraction1.getDenominator(), fraction2.getDenominator());
 
             result.setNumerator((mcm / fraction1.getDenominator() * fraction1.getNumerator() +
                     mcm / fraction2.getDenominator() * fraction2.getNumerator()));
@@ -95,7 +95,7 @@ public class Fraction {
 
     public Fraction multiply(Fraction fraction1, Fraction fraction2) {
         Fraction result = new Fraction();
-        if (fractionNotNull(fraction1) & fractionNotNull(fraction2)) {
+        if (Utils.fractionNotNull(fraction1) & Utils.fractionNotNull(fraction2)) {
             result.setNumerator(fraction1.getNumerator() * fraction2.getNumerator());
             result.setDenominator(fraction1.getDenominator() * fraction2.getDenominator());
         }
@@ -110,9 +110,9 @@ public class Fraction {
         boolean isEquivalent;
         isEquivalent = false;
 
-        if (fractionNotNull(fraction1) & fractionNotNull(fraction2)) {
-            int extremes = multiplyNumbers(fraction1.getNumerator(), fraction2.getDenominator());
-            int medium = multiplyNumbers(fraction1.getDenominator(), fraction2.getNumerator());
+        if (Utils.fractionNotNull(fraction1) & Utils.fractionNotNull(fraction2)) {
+            int extremes = Utils.multiplyNumbers(fraction1.getNumerator(), fraction2.getDenominator());
+            int medium = Utils.multiplyNumbers(fraction1.getDenominator(), fraction2.getNumerator());
             if (extremes == medium) {
                 isEquivalent = true;
             }
@@ -128,37 +128,5 @@ public class Fraction {
                 '}';
     }
 
-    private boolean greaterThan(int numberOne, int numberTwo) {
-        return numberOne > numberTwo;
-    }
-
-    private boolean fractionNotNull(Fraction fraction) {
-        return fraction != null;
-    }
-
-    private int multiplyNumbers(int a, int b) {
-        return a * b;
-    }
-
-    private int sumNumbers(int a, int b) {
-        return a + b;
-    }
-
-    private int minimumCommonMultiple(int a, int b) {
-        return (a * b) / mcd(a, b);
-    }
-
-    private int mcd(int a, int b) {
-        int minim = Math.min(Math.abs(a), Math.abs(b));
-        int maxim = Math.max(Math.abs(a), Math.abs(b));
-        int rest;
-
-        while (minim != 0) {
-            rest = maxim % minim;
-            maxim = minim;
-            minim = rest;
-        }
-        return maxim;
-    }
 
 }
