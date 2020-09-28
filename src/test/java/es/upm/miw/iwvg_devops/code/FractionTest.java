@@ -96,7 +96,16 @@ class FractionTest {
         Fraction fract4 = new Fraction(7, 3);
         assertEquals(false, this.fraction.isEquivalent(fract3, fract4));
     }
+    @Test
+    void testDivide(){
 
+        Fraction fract1 = new Fraction(2, 3);
+        Fraction fract2 = new Fraction(4, 5);
+        Fraction result = this.fraction.divide(fract1, fract2);
+        assertEquals(10, result.getNumerator());
+        assertEquals(12, result.getDenominator());
+
+    }
     @Test
     void testDecimal() {
 

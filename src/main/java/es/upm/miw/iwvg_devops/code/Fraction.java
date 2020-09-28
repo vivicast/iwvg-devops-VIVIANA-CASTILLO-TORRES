@@ -120,6 +120,15 @@ public class Fraction {
         return isEquivalent;
     }
 
+    public Fraction divide(Fraction fraction1, Fraction fraction2) {
+        Fraction fraction = new Fraction();
+        if (Utils.fractionNotNull(fraction1) & Utils.fractionNotNull(fraction2)) {
+            fraction.setNumerator(fraction1.getNumerator() * fraction2.getDenominator());
+            fraction.setDenominator(fraction1.getDenominator() * fraction2.getNumerator());
+        }
+        return fraction;
+    }
+
     @Override
     public String toString() {
         return "Fraction{" +
