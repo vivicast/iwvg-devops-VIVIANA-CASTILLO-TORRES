@@ -20,8 +20,9 @@ class SearchesTest {
     @Test
     void testFindUserFamilyNameInitialByAnyProperFraction() {
 
-        assertEquals(List.of("Ana Blanco", "Antonio Blanco"), searches.findUserFamilyNameInitialByAnyProperFraction()
-                .collect(Collectors.toList()));
+        assertEquals(List.of("Fernandez", "Blanco", "López", "Blanco", "Jimenez", "Perez"),
+                searches.findUserFamilyNameInitialByAnyProperFraction()
+                        .collect(Collectors.toList()));
     }
 
 
@@ -34,7 +35,7 @@ class SearchesTest {
     }
 
     @Test
-    void testFindUserIdByAllProperFraction () {
+    void testFindUserIdByAllProperFraction() {
         assertEquals(List.of("7", "8"), searches.findUserIdByAllProperFraction()
                 .collect(Collectors.toList()));
     }
