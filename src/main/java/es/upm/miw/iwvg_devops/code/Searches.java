@@ -1,5 +1,6 @@
 package es.upm.miw.iwvg_devops.code;
 
+
 import java.util.stream.Stream;
 
 /**
@@ -27,4 +28,14 @@ public class Searches {
                 .map(User::getId);
 
     }
+    public Stream<String> findUserIdByAllProperFraction(){
+        return new UsersDatabase().findAll()
+                .filter(user -> user.getFractions().stream()
+                        .allMatch(fraction -> fraction.isProper(fraction)))
+                .map(User::getId);
+
+    }
+
+
+
 }
