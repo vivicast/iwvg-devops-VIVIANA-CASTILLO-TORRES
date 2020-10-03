@@ -40,5 +40,13 @@ class SearchesTest {
                 .collect(Collectors.toList()));
     }
 
+    @Test
+    void testFindFractionDivisionByUserId(){
+
+        Fraction f2 = searches.findFractionDivisionByUserId("4");
+        assertEquals(8, f2.getNumerator());
+        assertEquals(8, f2.getDenominator());
+
+    }
 
 }
