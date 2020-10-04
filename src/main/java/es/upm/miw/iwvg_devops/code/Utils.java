@@ -2,23 +2,9 @@ package es.upm.miw.iwvg_devops.code;
 
 public class Utils {
 
-
-    public static boolean greaterThan(int numberOne, int numberTwo) {
-        return numberOne > numberTwo;
+    private Utils(){
+        //
     }
-
-    public static boolean fractionNotNull(Fraction fraction) {
-        return fraction != null;
-    }
-
-    public static int multiplyNumbers(int a, int b) {
-        return a * b;
-    }
-
-    public static int sumNumbers(int a, int b) {
-        return a + b;
-    }
-
     public static int minimumCommonMultiple(int a, int b) {
         return (a * b) / mcd(a, b);
     }

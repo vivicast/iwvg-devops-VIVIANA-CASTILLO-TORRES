@@ -9,8 +9,8 @@ class UsersDatabaseTest {
 
 
     @Test
-    void testfindAll(){
+    void testFindAll(){
         usersDatabase = new UsersDatabase();
-        assertEquals(6,usersDatabase.findAll().count());
+        assertEquals(8,usersDatabase.findAll().count());
     }
 }

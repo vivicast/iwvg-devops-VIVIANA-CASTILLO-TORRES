@@ -51,7 +51,7 @@ class FractionTest {
         Fraction fract1 = new Fraction(2, 3);
         Fraction fract2 = new Fraction(4, 5);
 
-        Fraction result = this.fraction.sum(fract1, fract2);
+        Fraction result = this.fraction.add(fract1, fract2);
         assertEquals(22, result.getNumerator());
         assertEquals(15, result.getDenominator());
 
@@ -59,7 +59,7 @@ class FractionTest {
         Fraction fract3 = new Fraction(3, 4);
         Fraction fract4 = new Fraction(2, 4);
 
-        Fraction result2 = this.fraction.sum(fract3, fract4);
+        Fraction result2 = this.fraction.add(fract3, fract4);
         assertEquals(5, result2.getNumerator());
         assertEquals(4, result2.getDenominator());
 
@@ -67,7 +67,7 @@ class FractionTest {
         Fraction fract5 = new Fraction(11, 10);
         Fraction fract6 = new Fraction(2, 3);
 
-        Fraction result3 = this.fraction.sum(fract5, fract6);
+        Fraction result3 = this.fraction.add(fract5, fract6);
         assertEquals(53, result3.getNumerator());
         assertEquals(30, result3.getDenominator());
     }
