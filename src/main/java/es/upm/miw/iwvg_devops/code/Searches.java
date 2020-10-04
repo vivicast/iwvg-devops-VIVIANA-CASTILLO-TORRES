@@ -41,8 +41,6 @@ public class Searches {
                 .filter(user -> user.getId().equals(id))
                 .flatMap(user -> user.getFractions().stream())
                 .reduce(f, f::divide);
-
-
     }
 
 }
