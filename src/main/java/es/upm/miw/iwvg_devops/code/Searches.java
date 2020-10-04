@@ -35,14 +35,17 @@ public class Searches {
 
     }
 
+    /**
+     * Total Fraction Division by userId
+     * @param id
+     * @return Fraction
+     */
     public Fraction findFractionDivisionByUserId(String id) {
         Fraction f = new Fraction();
         return new UsersDatabase().findAll()
                 .filter(user -> user.getId().equals(id))
                 .flatMap(user -> user.getFractions().stream())
                 .reduce(f, f::divide);
-
-
     }
 
 }

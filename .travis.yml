@@ -3,7 +3,7 @@ language: java
 branches:
   only:
     - develop
-    - "/^release-[0-999].[0-999]$/"
+    - "/^release-[0-999].[0-999].[0-999]$/"
     - master
 notifications:
   email:
